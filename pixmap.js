@@ -22,8 +22,6 @@ class pixmap {
                 pixel.style.boxSizing = 'border-box'
 
 
-                
-
                 this.wrapper.appendChild(pixel);
                 this.pixels.push(pixel)
 
@@ -37,13 +35,11 @@ class pixmap {
         return [Math.floor(Math.random() * this.sizex), Math.floor(Math.random() * this.sizey)];
     }
 
-    set(x, y, color){
-        this.pixels2d[x][y].style.background = color
-    }
 
-    aset([x,y], color){
-        
+    set([x,y], color, vector = ''){
         this.pixels2d[x][y].style.background = color
+        if (vector!='')
+            this.pixels2d[x][y].innerHTML = vector
     }
 
     getElement(){
