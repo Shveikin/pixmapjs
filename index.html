@@ -10,15 +10,16 @@
 <body>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const x = new pixmap(10, 10, 50);
+            const x = new pixmap(10, 10, 15);
             document.body.appendChild(x.getElement())
 
+            x.set(x.rand(), 1)
 
-            setInterval(() => {
-                x.set(x.rand(), '#ff0000', "^")
-            }, 100)
-
+            console.log(x.bite());
         });
     </script>
+    <button onclick="
+        x.set(x.rand(), 1)
+    ">12</button><br><br>
 </body>
 </html>
