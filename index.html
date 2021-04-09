@@ -6,20 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="pixmap.js"></script>
+    <script src="neiron.js"></script>
+
 </head>
 <body>
     <script>
+        let x = new neiron(2);
+
+
+        function rnd(){
+            document.getElementById('val1').value = Math.round(Math.random() * 10);
+            document.getElementById('val2').value = Math.round(Math.random() * 10);
+        }
+
+        function go(){
+
+            const tbl = document.getElementById('table');
+            const input1 = document.getElementById('val1');
+            const input2 = document.getElementById('val2');
+
+            const inputout = document.getElementById('out');
+            const inputoutii = document.getElementById('outii');
+
+
+
+
+            const tr = document.createElement('tr');
+            
+
+
+            let p1 = parseInt(input1.value) 
+            let p2 = parseInt(input2.value)
+
+            let result = x.run([p1,p2])
+            let true_result = p1 + p2 * 64;
+
+            tr.innerHTML = `<tr>${p1}</tr><tr>+${p2}</tr><tr>=${true_result}</tr><tr>result: (${result})</tr>`
+            inputout.value = true_result
+            inputoutii.value = result
+
+
+            x.lern([p1,p2], true_result)
+
+            result = x.run([p1,p2])
+
+
+            tbl.insertBefore(tr, tbl.firstChild)
+        }
+
+
         document.addEventListener('DOMContentLoaded', () => {
-            const x = new pixmap(10, 10, 15);
-            document.body.appendChild(x.getElement())
+            // x = new pixmap(10, 10, 15);
+            // document.body.appendChild(x.getElement())
 
-            x.set(x.rand(), 1)
+            // x.set(x.rand(), 1)
 
-            console.log(x.bite());
+            // // console.log(x.bite());
+            // initialization(2);
+            // go();
         });
     </script>
-    <button onclick="
-        x.set(x.rand(), 1)
-    ">12</button><br><br>
+    
+    
+    
+    <input type="number" id='val1' value="1">
+    <input type="number" id='val2' value="4">
+    <input type="number" id='out' readonly>
+    <input type="number" style='color: #400;' id='outii' readonly>
+
+    <hr>
+    <button onclick="go()">GO</button>
+    <button onclick="rnd()">random</button>
+
+    <table id='table'></table>
+
+    
+    
+    <br><br>
 </body>
 </html>
